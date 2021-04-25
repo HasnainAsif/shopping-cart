@@ -151,7 +151,7 @@ const CartPage = () => {
                 <Link to="/">
                   <i class="fas fa-chevron-left"></i> Return to Cart
                 </Link>
-                <button class="btn cart-btn">Submit Order</button>
+                <button class="btn cart-btn">Place Order</button>
               </div>
             </div>
             <div class="col-sm-12 col-md-4 mt-5 pt-3 cart-detail">

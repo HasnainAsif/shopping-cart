@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useHistory } from "react-router";
-import product_img from "../../assets/images/product.PNG";
+import product_img from "../../assets/images/mass.jpg";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 
@@ -22,7 +22,7 @@ const MainPage = () => {
                   <h3>ON GS PRE-WORKOUT</h3>
                   <h3> 300G GREEN APPLE 30 SERVINGS</h3>
                 </div>{" "}
-                <div>
+                <div class="text-center">
                   <p class="price">
                     <b>Price: $300</b>
                   </p>
@@ -30,7 +30,7 @@ const MainPage = () => {
                   <p>UPC: $300</p>
                   <p>
                     <label>QTY: </label>
-                    <select class="select-quantity">
+                    <select class="select-quantity ml-2">
                       <option value="1">1</option>
                       <option value="1">2</option>
                       <option value="1">3</option>
@@ -53,6 +53,7 @@ const MainPage = () => {
             </div>
             <div class="col-md-2"></div>
             <div class="col-sm-12 col-md-8 text-center">
+              <h4 class="mb-4">About this item</h4>
               <p>VITAMIN D Provides Immune Support</p>
               <p>
                 PACKAGING MAY VERY - New look, with the same trusted Quality!
