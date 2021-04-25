@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
@@ -7,7 +8,7 @@ const Header = () => {
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand white-text" href="#">
-              Navbar
+              <img src={logo} width="50" height="40" />
             </a>
             <button
               class="navbar-toggler"
