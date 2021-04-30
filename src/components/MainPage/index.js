@@ -1,59 +1,102 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import product_img from "../../assets/images/mass.jpg";
+// import product_img from "../../assets/images/mass.jpg";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+import { getProductDetail } from "../services/shoppingCart";
+import { toast } from "react-toastify";
 
 const MainPage = () => {
   let history = useHistory();
+  const [productData, setProductData] = useState({});
+  const [quantityData, setQuantityData] = useState([]);
+  const [quantityValue, setQuantityValue] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      let quantityOption = [];
+      let title = "ON GS PRE-WORKOUT 300G GREEN APPLE 30 SERVINGS";
+      let data = await getProductDetail("queryProducts", title);
+      // console.log(data);
+      setProductData(data?.result[0]?.record);
+      for (let i = 0; i < data?.result[0]?.record?.qtyInStock; i++) {
+        quantityOption.push(
+          <option key={i + 1} value={i + 1}>
+            {i + 1}
+          </option>
+        );
+      }
+      setQuantityData(quantityOption);
+    }
+    fetchData();
+  }, []);
+
+  const onChangeQuantity = (e) => {
+    setQuantityValue(e.target.value);
+  };
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    if (quantityValue === "") {
+      return toast.error("Please Enter quantity first");
+    }
+    history.push({
+      pathname: "/add-to-cart",
+      state: {
+        quantity: quantityValue,
+        price: productData.price,
+        title: productData.title,
+      },
+    });
+  };
 
   return (
     <Fragment>
       <Header />
       <section>
-        <div class="container">
-          <div class="row mt-5">
-            <div class="col-sm-12 col-md-4 text-center mb-4 align-img-center">
-              <img src={product_img} />
+        <div className="container">
+          <div className="row mt-5">
+            <div className="col-sm-12 col-md-6 text-center mb-4 align-img-center">
+              <img
+                src={productData && productData.imageLink}
+                alt="Product Image"
+              />
             </div>
-            <div class="col-sm-12 col-md-8 mb-4">
-              <div class="container">
-                <div class="text-center mb-5">
-                  <h3>ON GS PRE-WORKOUT</h3>
-                  <h3> 300G GREEN APPLE 30 SERVINGS</h3>
-                </div>{" "}
-                <div class="text-center">
-                  <p class="price">
-                    <b>Price: $300</b>
+            <div className="col-sm-12 col-md-6 mb-4">
+              <div className="container">
+                <div className="text-center mb-5">
+                  {/* <h3>ON GS PRE-WORKOUT 300G GREEN APPLE 30 SERVINGS</h3> */}
+                  <h3>{productData && productData.title}</h3>
+                  {/* <h3> </h3> */}
+                </div>
+                <div className="text-center">
+                  <p className="price">
+                    <b>Price: ${productData && productData.price}</b>
                   </p>
-                  <p>SKU: $300</p>
-                  <p>UPC: $300</p>
+                  <p>SKU: ${productData && productData.sku}</p>
+                  <p>UPC: ${productData && productData.upc}</p>
                   <p>
                     <label>QTY: </label>
-                    <select class="select-quantity ml-2">
-                      <option value="1">1</option>
-                      <option value="1">2</option>
-                      <option value="1">3</option>
-                      <option value="1">4</option>
-                      <option value="1">5</option>
+                    <select
+                      className="select-quantity ml-2"
+                      value={quantityValue}
+                      onChange={onChangeQuantity}
+                    >
+                      <option value="">...</option>
+                      {quantityData.map((item) => item)}
                     </select>
                   </p>
                   <p>
-                    <button
-                      class="btn cart-btn"
-                      onClick={(e) =>
-                        history.push({ pathname: "/add-to-cart" })
-                      }
-                    >
+                    <button className="btn cart-btn" onClick={addToCart}>
                       Add to Cart
                     </button>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-sm-12 col-md-8 text-center">
-              <h4 class="mb-4">About this item</h4>
+            <div className="col-md-2"></div>
+            <div className="col-sm-12 col-md-8 text-center">
+              <h4 className="mb-4">About this item</h4>
               <p>VITAMIN D Provides Immune Support</p>
               <p>
                 PACKAGING MAY VERY - New look, with the same trusted Quality!
@@ -71,7 +114,7 @@ const MainPage = () => {
                 are putting in your body
               </p>
             </div>
-            <div class="col-md-2"></div>
+            <div className="col-md-2"></div>
           </div>
         </div>
       </section>

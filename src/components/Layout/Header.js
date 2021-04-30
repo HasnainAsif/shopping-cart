@@ -3,15 +3,15 @@ import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
-    <div class="header">
-      <div class="main-header">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand white-text" href="#">
+    <div className="header">
+      <div className="main-header">
+        <div className="container-fluid">
+          <nav className="navbar navbar-expand-lg navbar-light ">
+            <a className="navbar-brand white-text" href="#">
               <img src={logo} width="50" height="40" />
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -19,26 +19,29 @@ const Header = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form class="form-inline my-2 my-lg-0">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <form className="form-inline my-2 my-lg-0">
                 <input
-                  class="form-control mr-sm-2"
+                  className="form-control mr-sm-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
               </form>
 
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link white-text" href="#">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item active">
+                  <a className="nav-link white-text" href="#">
                     Orders
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link white-text" href="#">
+                <li className="nav-item">
+                  <a className="nav-link white-text" href="#">
                     Cart
                   </a>
                 </li>
@@ -47,32 +50,32 @@ const Header = () => {
           </nav>
         </div>
       </div>
-      <div class="second-header">
-        <div class="pl-5 pr-5">
-          <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
-            <ul class="navbar-nav text-center">
-              <li class="nav-item">
-                <a class="nav-link white-text" href="#">
+      <div className="second-header">
+        <div className="pl-5 pr-5">
+          <nav className="navbar navbar-expand-lg navbar-light justify-content-center">
+            <ul className="navbar-nav text-center">
+              <li className="nav-item">
+                <a className="nav-link white-text" href="#">
                   Home
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link white-text" href="#">
+              <li className="nav-item">
+                <a className="nav-link white-text" href="#">
                   Shop
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link white-text" href="#">
+              <li className="nav-item">
+                <a className="nav-link white-text" href="#">
                   Gallary
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link white-text" href="#">
+              <li className="nav-item">
+                <a className="nav-link white-text" href="#">
                   About Us
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link white-text" href="#">
+              <li className="nav-item">
+                <a className="nav-link white-text" href="#">
                   Contact Us
                 </a>
               </li>
